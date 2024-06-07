@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTec Register</title>
+    <link rel="stylesheet" href="static/comman.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        .register-container {
+          width:30%;
+          margin: 100px auto;
+          padding: 20px;
+          border: 1px solid #ce1616;
+          border-radius: 5px;
+          background-color: #c5de8a9e;
+        }
+        .register-icon {
+          font-size: 50px;
+          color: #007bff;
+          margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row2">
+        <div class="register-container">
+          <div class="text-center">
+            <i class="fas fa-user-plus register-icon"></i>
+          </div>
+          <h2 class="text-center mb-4">Register</h2>
+           
+          <form method="post" action="register.php">
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="confirm_password">Confirm Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                id="confirm_password"
+                name="confirm_password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Register
+            </button>
+          </form>
+          <p class="text-center mt-3">
+            Already have an account? <a href="index.html">Login</a>
+          </p>
+        </div>
+      </div>
+   
+      <footer>
+        <h3>SISTec Ratibad Bus Services</h3>
+        <p>&copy; SISTec Ratibad Campus<br><br>Sikandrabad, Near Ratibad, Bhadbhada Road, Bhopal (M.P.) 462044<br><br>Contact for any Help: <b>Pramod Biswal sir</b><br><br>📞 Contact Number: <b>+91 7049325773</b></p>
+        <div class="icon">
+            <a href="#"><img class="img" src="static/img/insta.jpg" height="50px" alt="Instagram"></a>
+            <a href="#"><img class="img" src="static/img/wp.jpg" height="50px" alt="WhatsApp"></a>
+            <a href="#"><img class="img" src="static/img/tg.jpg" height="50px" alt="Telegram"></a>
+            <a href="#"><img class="img" src="static/img/yt.jpg" height="50px" alt="YouTube"></a>
+        </div>
+    </footer>
+</body>
+</html>

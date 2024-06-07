@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bus Route Information</title>
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+    <link rel="stylesheet" href="static/comman.css">
+    <style>
+        .row1 {
+            background-image: url('static/img/searchbg.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden; 
+            height: 80vh; 
+        }
+
+        .blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px); 
+        }
+
+        .input-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center; 
+            color: #fff; 
+        }
+       
+        .input-container h4 {
+            background-color: rgba(161, 154, 184, 0.616);
+            border: 1px solid black;
+            border-radius: 10px;
+            width: fit-content;
+            padding: 10px 20px; 
+            margin:10px auto; 
+        }
+
+        .input-container h5 {
+            background-color: blue;
+            border: 1px solid black;
+            border-radius: 10px;
+            width: fit-content;
+            font-size: 20px;
+            padding: 5px 10px;
+            margin:10px auto; 
+        }
+
+        .input {
+            width: 80%; 
+            max-width: 300px;
+            height: 40px; 
+            padding: 10px;
+            border: 1px solid #060606;
+            border-radius:5px;
+            outline: none;
+            font-size: 15px;
+            font-family: cursive;
+            margin: 10px auto; 
+            display: block; 
+        }
+
+       .containerx {
+           margin-top: 50px;
+           text-align: center;
+       }
+       .headerx {
+           text-align: center;
+           margin-bottom: 30px;
+       }
+       .headerx h1 {
+           font-size: 2.5em;
+       }
+       .table {
+           margin-bottom: 50px;
+       }
+       .contact-info {
+           margin-top: 30px;
+       }
+       .search-bar {
+           margin-bottom: 20px;
+       }
+       .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.3rem 0.7rem;
+            text-decoration: none;
+            margin-top: 1rem;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-size:10px;
+       }
+
+       .btn:hover {
+            background-color: #45a0a0;
+       }
+       .btn-search {
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-search:hover {
+    background-color: #45a0a0;
+    transform: scale(1.05);
+}
+
+.btn-search:active {
+    transform: scale(0.95);
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="containerx">
+        <div class="headerx">
+            <h1>Sagar Group of Institutions</h1>
+            <h3>Bus Route and Timings</h3>
+        </div>
+        <div class="row1">
+            <div class="blur"></div>
+            <div class="input-container">
+                <h5>SISTec-R & SISTec-E</h5>
+                <input type="text" id="searchInput" name="text" class="input" placeholder="Search...">
+                <button class="btn-search" onclick="searchBus()">Search</button>
+                <a href="index2.html"><button class="btn-search">Home</button></a>
+                <h4>Search Bus No. To Get Route Information Easily</h4>
+            </div>
+        </div>
+        <div id="bus01" style="display: none;">
+            <h4>Bus No: 01</h4>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Gandhi Nagar</td>
+                        <td>7:15</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Asharam Bapu Square</td>
+                        <td>7:17</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Bhaskar Colony</td>
+                        <td>7:20</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Data Colony</td>
+                        <td>7:25</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Panchwati</td>
+                        <td>7:26</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Bairahgarh Police Station</td>
+                        <td>7:35</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Lalghati</td>
+                        <td>7:40</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Koh-E-Fiza</td>
+                        <td>7:41</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Satae Bank Square</td>
+                        <td>7:45</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Royal Market</td>
+                        <td>7:46</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Imami gate</td>
+                        <td>7:47</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Peer Gate</td>
+                        <td>7:48</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Moti Masjid</td>
+                        <td>7:50</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Kamla Park</td>
+                        <td>7:52</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Poly Technic</td>
+                        <td>7:55</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Roshanpura</td>
+                        <td>8:00</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>Jawahar Chowk</td>
+                        <td>8:05</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>Bharat Mata Square</td>
+                        <td>8:07</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>23 Batalivan</td>
+                        <td>8:10</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Ratibad Campus</td>
+                        <td>9:00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><strong>Driver: Asif (Mob: 9893102828)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+
+        <!-- Bus Route 2: Ashoka Gardan Route -->
+        <div id="bus02" style="display: none;">
+            <h4>Bus No: 02</h4>
+            <table class="table table-striped" id="busTable02">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Pani ki Tanki (Ashoka Gardan)</td>
+                        <td>18:15</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ratibad Campus</td>
+                        <td>9:00</td>
+                    </tr>
+                    <!-- Add more rows for other stops on Ashoka Gardan Route -->
+                    <tr>
+                        <td colspan="3"><strong>Driver: Dinesh Verma (Mob: 7389202384)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Bus Route 3: Karond Route -->
+        <div id="bus03" style="display: none;">
+            <h4>Bus No: 03</h4>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">S:No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Dwarka Dham SPS Campus</td>
+                        <td>7:15</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Lambakheda</td>
+                        <td>7:30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Karond</td>
+                        <td>7:35</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Bhanpur</td>
+                        <td>7:43</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Chhola Mandir</td>
+                        <td>7:53</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Nadra Bus Stand</td>
+                        <td>8:13</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>Bhopal Railway Station PL NO-6</td>
+                        <td>8:18</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Bharat Talkies</td>
+                        <td>8:19</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>Sultaniya Hospital</td>
+                        <td>8:23</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>Jahangirabad</td>
+                        <td>8:25</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11</th>
+                        <td>PHQ</td>
+                        <td>8:27</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">12</th>
+                        <td>Roshanpura</td>
+                        <td>8:30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13</th>
+                        <td>Bharat Mata Square</td>
+                        <td>8:32</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">14</th>
+                        <td>Ratibad Campus</td>
+                        <td>9:00</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3"><strong>Driver: Ghanshyam (Mob: 9770534112)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="bus04" style="display: none;">
+            <h4>Bus No: 04</h4>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">S.No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Dwarka Nagar</td>
+                        <td>7:30</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Prabhat Square</td>
+                        <td>7:40</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Pushpa Nagar</td>
+                        <td>7:45</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Sai Mandir/80-feet road</td>
+                        <td>7:50</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ashoka Garden</td>
+                        <td>7:55</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Ashoka Garden/Pani ki Tanki</td>
+                        <td>8.05</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Barkedi Fatak</td>
+                        <td>8.10</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Roshanpura</td>
+                        <td>8.20</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>New Market </td>
+                        <td>8.22</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Dipo</td>
+                        <td>8.28</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Ratibad Campus</td>
+                        <td>9.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><strong>Driver:Devendra Parmar (mob:911997080)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+
+        <div class="contact-info">
+            <h5>Contact Information:</h5>
+            <p><strong>Transport Incharge:</strong> Pramod Biswal (Mob: 7024256904)</p>
+            <p><strong>Ramswroop:</strong> 9669660990</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function searchBus() {
+            var input = document.getElementById('searchInput').value.toLowerCase();
+            var buses = document.querySelectorAll('[id^="bus"]');
+            
+            buses.forEach(function(bus) {
+                var busNo = bus.id.substring(3); // Extract bus number from bus id
+                if (busNo.includes(input)) {
+                    bus.style.display = '';
+                    bus.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    bus.style.display = 'none';
+                }
+            });
+        }
+    </script> <script>
+        function searchBus() {
+            var input = document.getElementById('searchInput').value.toLowerCase();
+            var buses = document.querySelectorAll('[id^="bus"]');
+            
+            buses.forEach(function(bus) {
+                var busNo = bus.id.substring(3); // Extract bus number from bus id
+                if (busNo.includes(input)) {
+                    bus.style.display = '';
+                    bus.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    bus.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+<footer>
+    <h3>SISTec Ratibad Bus Services</h3>
+    <p>&copy; SISTec Ratibad Campus<br><br>Sikandrabad, Near Ratibad, Bhadbhada Road, Bhopal (M.P.) 462044<br><br>Contact for any Help: <b>Pramod Biswal sir</b><br><br>📞 Contact Number: <b>+91 7049325773</b></p>
+    <div class="icon">
+        <a href="#"><img class="img" src="static/img/insta.jpg" height="50px" alt="Instagram"></a>
+        <a href="#"><img class="img" src="static/img/wp.jpg" height="50px" alt="WhatsApp"></a>
+        <a href="#"><img class="img" src="static/img/tg.jpg" height="50px" alt="Telegram"></a>
+        <a href="#"><img class="img" src="static/img/yt.jpg" height="50px" alt="YouTube"></a>
+    </div>
+</footer>
+</html>

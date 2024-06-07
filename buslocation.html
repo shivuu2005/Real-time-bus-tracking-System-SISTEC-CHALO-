@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Route Tracker</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 70%;
+            /* Adjust the width for the map */
+            height: calc(100vh - 40px);
+            /* Adjusted height for the map, considering the margin and padding */
+            position: absolute;
+            top: 0;
+            right: 0;
+            /* Positioning the map to the right */
+            margin-left: 10%;
+            /* Adding a gap of 10% between the map and the sidebar */
+        }
+
+    #sidebar {
+        width: 25%;
+        height: 100vh;
+        overflow-y: top;
+        background: #f7f7f7;
+        padding: 20px;
+        box-shadow: -1px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #search-bar,
+    #route-select {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="radio"]+label {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .stop {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .stop.active {
+        background: #007bff;
+        color: white;
+    }
+
+    .marker {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    .bus-marker {
+        background-image: url('static/img/s.jpg');
+        background-size: cover;
+    }
+
+    .stop-marker {
+        background-image: url('static/img/logo.png');
+        background-size: cover;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+    }
+
+    label {
+        display: block;
+    }
+</style>
+    </style>
+</head>
+
+<body>
+    <div id="sidebar">
+        <div id="search-bar">
+            <input type="text" id="route-search" placeholder="Enter route number...">
+        </div>
+        <div id="route-select">
+            <label><input type="radio" name="route" value="7"> Route 7</label>
+            <label><input type="radio" name="route" value="18"> Route 18</label>
+            <!-- Add more routes as needed -->
+        </div>
+        <div id="stops">
+            <!-- Stops will be dynamically populated here -->
+        </div>
+    </div>
+    <div id="map"></div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2hpdnV1MTM5NiIsImEiOiJjbHdpeHRwam0wc2tnMmtwZm5qNHQ2ZW10In0.wem2vLt3IOCyefjBJxmT9w';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [77.4126, 23.2599], // Adjust the center coordinates to your location
+            zoom: 12
+        });
+
+        const routes = {
+        "7": [
+        
+            { location: [77.4544, 23.2848], name: "Gandhi Nagar", time: "7:15" },
+            { location: [77.4435, 23.2707], name: "Asharam Bapu Square", time: "7:17" },
+            { location: [77.4335, 23.2601], name: "Bhaskar Colony", time: "7:20" },
+            { location: [77.4206, 23.2462], name: "Data Colony", time: "7:25" },
+            { location: [77.4162, 23.2445], name: "Panchwati", time: "7:26" },
+            { location: [77.3898, 23.2735], name: "Bairahgarh Police Station", time: "7:35" },
+            { location: [77.3876, 23.2940], name: "Lalghati", time: "7:40" },
+            { location: [77.3960, 23.3088], name: "Koh-E-Fiza", time: "7:41" },
+            { location: [77.4015, 23.3196], name: "State Bank Square", time: "7:45" },
+            { location: [77.4038, 23.3266], name: "Royal Market", time: "7:46" },
+            { location: [77.4049, 23.3316], name: "Imami Gate", time: "7:47" },
+            { location: [77.4059, 23.3365], name: "Peer Gate", time: "7:48" },
+            { location: [77.4070, 23.3412], name: "Moti Masjid", time: "7:50" },
+            { location: [77.4123, 23.3478], name: "Kamla Park", time: "7:52" },
+            { location: [77.4166, 23.3567], name: "Poly Technic", time: "7:55" },
+            { location: [77.4215, 23.3636], name: "Roshanpura", time: "8:00" },
+            { location: [77.4253, 23.3715], name: "Jawahar Chowk", time: "8:05" },
+            { location: [77.4281, 23.3775], name: "Bharat Mata Square", time: "8:07" },
+            { location: [77.4352, 23.3846], name: "23 Batalivan", time: "8:10" },
+            { location: [77.5139, 23.2176], name: "Ratibad Campus", time: "9:00" }
+
+        ],
+        "18": [
+            { location: [77.4532, 23.3000], name: "Ashoka Garden" },
+            { location: [77.4600, 23.3100], name: "Nehru Nagar" },
+            { location: [77.4335, 23.2601], name: "Bhaskar Colony", time: "7:20" },
+            { location: [77.4206, 23.2462], name: "Data Colony", time: "7:25" },
+            { location: [77.4162, 23.2445], name: "Panchwati", time: "7:26" },
+            { location: [77.3898, 23.2735], name: "Bairahgarh Police Station", time: "7:35" },
+            { location: [77.3876, 23.2940], name: "Lalghati", time: "7:40" },
+        ]
+    };
+
+    let currentRoute = [];
+    let currentIndex = 0;
+    let busMarker;
+
+    function loadRoute(routeKey) {
+        const route = routes[routeKey];
+        const errorMessagE1 =document.getElementById('error-message');
+        if (!route) {
+            errorMessagE1.textContent('Route not found:', routeKey);
+            return;
+        }
+
+        currentRoute = route;
+        currentIndex = 0;
+
+        const routeCoordinates = route.map(stop => stop.location);
+        const routeGeoJSON = {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+                'type': 'LineString',
+                'coordinates': routeCoordinates
+            }
+        };
+
+        if (map.getSource('route')) {
+            map.getSource('route').setData(routeGeoJSON);
+        } else {
+            map.addSource('route', {
+                'type': 'geojson',
+                'data': routeGeoJSON
+            });
+
+            map.addLayer({
+                'id': 'route',
+                'type': 'line',
+                'source': 'route',
+                'layout': {},
+                'paint': {
+                    'line-color': '#007bff',
+                    'line-width': 4
+                }
+            });
+        }
+
+        route.forEach(stop => {
+            new mapboxgl.Marker(createMarker('stop'))
+                .setLngLat(stop.location)
+                .addTo(map);
+        });
+
+        if (busMarker) busMarker.remove();
+
+        busMarker = new mapboxgl.Marker(createMarker('bus'))
+            .setLngLat(route[0].location)
+            .addTo(map);
+
+        updateStopsSidebar(route);
+        simulateBusMovement();
+    }
+
+    function createMarker(type) {
+        const el = document.createElement('div');
+        el.className = `marker ${type}-marker`;
+        return el;
+    }
+
+    function updateStopsSidebar(route) {
+        document.getElementById('stops').innerHTML = route.map((stop, index) =>
+            `<div class="stop" id="stop-${index}"><strong>${stop.name}</strong></div>`
+        ).join('');
+    }
+
+    function simulateBusMovement() {
+        currentIndex = (currentIndex + 1) % currentRoute.length;
+        const newPosition = currentRoute[currentIndex].location;
+        busMarker.setLngLat(newPosition);
+        map.setCenter(newPosition);
+
+        document.querySelectorAll('.stop').forEach(el => el.classList.remove('active'));
+        document.getElementById(`stop-${currentIndex}`).classList.add('active');
+
+        setTimeout(simulateBusMovement, 10000); // Move every 5 seconds
+    }
+
+    document.getElementById('route-search').addEventListener('input', function (e) {
+        const routeKey = e.target.value.trim().toLowerCase().replace(/\s+/g, '');
+        loadRoute(routeKey);
+    });
+
+    document.querySelectorAll('input[name="route"]').forEach(el =>
+        el.addEventListener('change', function (e) {
+            loadRoute(e.target.value);
+        })
+    );
+
+    // Load default route
+    loadRoute('route7');
+</script>
+</body> </html>

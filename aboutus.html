@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/comman.css">
+    <title>About Us</title>
+    <style>
+        
+        .about {
+            
+            background: #f4f4f4;
+            line-height: 1.8;
+        }
+        .about h1,h2 {
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #333;
+            margin-left:10%;
+            
+        }
+        .about p {
+            max-width:70%;
+            font-size: 16px;
+            color: #666;
+            margin-left:10%;
+        }
+    </style>
+   
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="col1">
+                    <a href="index2.html"><img src="static/img/logo.png"></a>
+                </div>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="col2">
+                    
+                    <a href="index2.html"><button class="button">Home</button></a>
+                    <a href="search.html"><button class="button">Bus Info.</button></a>
+                    <a href="buslocation.html"><button class="button">Bus Location</button></a>
+                    <a href="complaint.html"><button class="button">Complaint</button></a>
+                    <a href="contactus.html"><button class="button">Contact Us</button></a>
+                    <a href="userprofile.php"><button class="button">Profile</button></a>
+                    <script>
+                        document.querySelector('.menu-toggle').addEventListener('click', function() {
+                            document.querySelector('.col2').classList.toggle('active');
+                        });
+                    </script>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="about">
+        <h1>About Us</h1>
+        <p>Welcome to <strong>Sistec Chalo</strong>!</p>
+        <p>At Sistec Chalo, our mission is to ensure that Sistec College students have access to reliable and real-time information about their college bus locations. We understand the importance of punctuality and convenience for students navigating their daily commutes. Our platform is dedicated to providing an efficient solution to track Sistec College buses in real time, making your journey smoother and more predictable.</p>
+        
+        <h2>What We Offer</h2>
+        <p><strong>Real-Time Bus Tracking</strong><br>
+        Gone are the days of uncertainty and waiting endlessly at bus stops. With Sistec Chalo, students can now track the exact location of their college bus in real time. Our user-friendly interface allows you to see where your bus is at any given moment, helping you plan your day better.</p>
+        
+        <p><strong>Enhanced Convenience</strong><br>
+        We know how valuable your time is. By offering precise bus locations, we aim to minimize the stress and guesswork involved in commuting. Whether you're heading to college in the morning or returning home in the evening, Sistec Chalo ensures you're always informed.</p>
+        
+        <p><strong>Reliability and Accuracy</strong><br>
+        Our system is designed to provide the most accurate and up-to-date information available. By using advanced tracking technology, we ensure that the data you receive is both reliable and precise.</p>
+        
+        <h2>Our Vision</h2>
+        <p>Our vision is to transform the daily commute for Sistec College students into a hassle-free experience. By leveraging cutting-edge technology, we strive to bring convenience and peace of mind to every student. We are committed to continuous improvement and regularly update our services to meet the evolving needs of our users.</p>
+        
+        <h2>Get in Touch</h2>
+        <p>We love to hear from you! Whether you have feedback, suggestions, or need assistance, our team is here to help. Feel free to reach out to us through our <a href="contactus.html">Contact Us</a> page.</p>
+        
+        <p>Thank you for choosing Sistec Chalo. We look forward to making your college commute as smooth and convenient as possible.</p>
+    </div>
+        </body>
+  
+    
+        <footer>
+            <h3>SISTec Ratibad Bus Services</h3>
+            <p>&copy; SISTec Ratibad Campus<br><br>Sikandrabad, Near Ratibad, Bhadbhada Road, Bhopal (M.P.) 462044<br><br>Contact for any Help: <b>Pramod Biswal sir</b><br><br>📞 Contact Number: <b>+91 7049325773</b></p>
+            <div class="icon">
+                <a href="#"><img class="img" src="static/img/insta.jpg" height="50px" alt="Instagram"></a>
+                <a href="#"><img class="img" src="static/img/wp.jpg" height="50px" alt="WhatsApp"></a>
+                <a href="#"><img class="img" src="static/img/tg.jpg" height="50px" alt="Telegram"></a>
+                <a href="#"><img class="img" src="static/img/yt.jpg" height="50px" alt="YouTube"></a>
+            </div>
+        </footer>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Complaint Form</title>
+    <link rel="stylesheet" href="static/complaint.css">
+    <link rel="stylesheet" href="static/comman.css">
+</head>
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="col1">
+                <a href="index2.html"><img src="static/img/logo.png"></a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="col2">
+                
+                <a href="index2.html"><button class="button">Home</button></a>
+                <a href="search.html"><button class="button">Bus Info.</button></a>
+                <a href="buslocation.html"><button class="button">Bus Location</button></a>
+                <a href="aboutus.html"><button class="button">About Us</button></a>
+                <a href="contactus.html"><button class="button">Contact Us</button></a>
+                <a href="userprofile.php"><button class="button">Profile</button></a>
+                <script>
+                    document.querySelector('.menu-toggle').addEventListener('click', function() {
+                        document.querySelector('.col2').classList.toggle('active');
+                    });
+                </script>
+            </div>
+        </div>
+    </nav>
+</header>
+        
+<body>
+    <div class="container1">
+        <h2> Complaint Form</h2>
+        <form action="complaint.php" method="POST">
+            <div class="form-group">
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" name="studentName" required >
+            </div>
+
+            <div class="form-group">
+                <label for="branch">Branch:</label>
+                <input type="text" id="branch" name="branch" required >
+            </div>
+
+            <div class="form-group">
+                <label for="enrollmentNo">Enrollment No:</label>
+                <input type="text" id="enrollmentNo" name="enrollmentNo" required >
+            </div>
+
+            <div class="form-group">
+                <label for="busNo">Bus No:</label>
+                <input type="text" id="busNo" name="busNo" required >
+            </div>
+
+            <div class="form-group">
+                <label for="driverName">Driver Name:</label>
+                <input type="text" id="driverName" name="driverName" optional>
+            </div>
+
+            <div class="form-group">
+                <label for="complaintDate">Complaint Date:</label>
+                <input type="date" id="complaintDate" name="complaintDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="incidentDetails">Detail of Incident:</label>
+                <textarea id="incidentDetails" name="incidentDetails" required placeholder="Message..."></textarea>
+            </div>
+
+            <button type="submit" >Submit</button>
+            
+        </form>
+
+        
+                
+    </div>
+    <footer>
+        <h3>SISTec Ratibad Bus Services</h3>
+        <p>&copy; SISTec Ratibad Campus<br><br>Sikandrabad, Near Ratibad, Bhadbhada Road, Bhopal (M.P.) 462044<br><br>Contact for any Help: <b>Pramod Biswal sir</b><br><br>📞 Contact Number: <b>+91 7049325773</b></p>
+        <div class="icon">
+            <a href="#"><img class="img" src="static/img/insta.jpg" height="50px" alt="Instagram"></a>
+            <a href="#"><img class="img" src="static/img/wp.jpg" height="50px" alt="WhatsApp"></a>
+            <a href="#"><img class="img" src="static/img/tg.jpg" height="50px" alt="Telegram"></a>
+            <a href="#"><img class="img" src="static/img/yt.jpg" height="50px" alt="YouTube"></a>
+        </div>
+    </footer>
+</body>
+</html>
